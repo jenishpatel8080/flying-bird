@@ -4,6 +4,9 @@ const scoreElement = document.getElementById('score');
 const gameOverElement = document.getElementById('gameOver');
 const finalScoreElement = document.getElementById('finalScore');
 const restartBtn = document.getElementById('restartBtn');
+const startScreen = document.getElementById('startScreen');
+const startBtn = document.getElementById('startBtn');
+const gameContainer = document.getElementById('gameContainer');
 
 let bird = {
     x: 50,
@@ -20,7 +23,7 @@ let pipeWidth = 50;
 let pipeGap = 150;
 let pipeSpeed = 2;
 let score = 0;
-let gameRunning = true;
+let gameRunning = false;
 
 function drawBird() {
     ctx.fillStyle = '#FFD700';
@@ -118,6 +121,13 @@ function restartGame() {
     gameLoop();
 }
 
+function startGame() {
+    startScreen.style.display = 'none';
+    gameContainer.style.display = 'block';
+    gameRunning = true;
+    gameLoop();
+}
+
 canvas.addEventListener('click', () => {
     if (gameRunning) {
         bird.velocity = bird.jump;
@@ -125,5 +135,4 @@ canvas.addEventListener('click', () => {
 });
 
 restartBtn.addEventListener('click', restartGame);
-
-gameLoop();
+startBtn.addEventListener('click', startGame);

@@ -8,6 +8,40 @@ body {
     font-family: Arial, sans-serif;
 }
 
+#startScreen {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+#startScreen h1 {
+    font-size: 48px;
+    color: #228B22;
+    margin-bottom: 20px;
+}
+
+#startScreen p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+#startBtn {
+    padding: 15px 30px;
+    font-size: 24px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#startBtn:hover {
+    background-color: #45a049;
+}
+
 #gameContainer {
     position: relative;
     border: 2px solid #000;
