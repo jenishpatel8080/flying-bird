@@ -109,8 +109,10 @@ function gameLoop() {
 }
 
 function gameOver() {
-    finalScoreElement.textContent = score;
-    gameOverElement.style.display = 'block';
+    gameContainer.style.display = 'none';
+    startScreen.style.display = 'block';
+    gameRunning = false;
+    gameStarted = false;
 }
 
 function restartGame() {
@@ -128,6 +130,13 @@ function restartGame() {
 function startGame() {
     startScreen.style.display = 'none';
     gameContainer.style.display = 'block';
+    // Reset game state
+    bird.y = 300;
+    bird.velocity = 0;
+    pipes = [];
+    score = 0;
+    scoreElement.textContent = `Score: ${score}`;
+    gameOverElement.style.display = 'none';
     gameRunning = true;
     gameStarted = false;
     // Game loop will start on first click
