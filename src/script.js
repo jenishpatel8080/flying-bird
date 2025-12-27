@@ -24,6 +24,7 @@ let pipeGap = 150;
 let pipeSpeed = 2;
 let score = 0;
 let gameRunning = false;
+let gameStarted = false;
 
 function drawBird() {
     ctx.fillStyle = '#FFD700';
@@ -43,8 +44,10 @@ function drawPipes() {
 }
 
 function updateBird() {
-    bird.velocity += bird.gravity;
-    bird.y += bird.velocity;
+    if (gameStarted) {
+        bird.velocity += bird.gravity;
+        bird.y += bird.velocity;
+    }
 }
 
 function updatePipes() {
@@ -118,19 +121,27 @@ function restartGame() {
     scoreElement.textContent = `Score: ${score}`;
     gameOverElement.style.display = 'none';
     gameRunning = true;
-    gameLoop();
+    gameStarted = false;
+    // Don't start gameLoop here, wait for click
 }
 
 function startGame() {
     startScreen.style.display = 'none';
     gameContainer.style.display = 'block';
     gameRunning = true;
-    gameLoop();
+    gameStarted = false;
+    // Game loop will start on first click
 }
 
 canvas.addEventListener('click', () => {
     if (gameRunning) {
-        bird.velocity = bird.jump;
+        if (!gameStarted) {
+            gameStarted = true;
+            bird.velocity = bird.jump;
+            gameLoop();
+        } else {
+            bird.velocity = bird.jump;
+        }
     }
 });
 
