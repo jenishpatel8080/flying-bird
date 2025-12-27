@@ -14,8 +14,8 @@ let bird = {
     width: 30,
     height: 30,
     velocity: 0,
-    gravity: 0.6,
-    jump: -12
+    gravity: 0.8,
+    jump: -10
 };
 
 let pipes = [];
