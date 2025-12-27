@@ -109,6 +109,7 @@ function gameLoop() {
 }
 
 function gameOver() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     gameContainer.style.display = 'none';
     startScreen.style.display = 'block';
     gameRunning = false;
@@ -139,6 +140,7 @@ function startGame() {
     gameOverElement.style.display = 'none';
     gameRunning = true;
     gameStarted = false;
+    draw(); // Draw initial state
     // Game loop will start on first click
 }
 
